@@ -6,9 +6,14 @@ import defaultImg from '../../../public/images/default.png'
 
 describe('Map', () => {
     let mountedMap;
-
+    let props;
     beforeEach(() => {
-        mountedMap = shallow(<Map />);
+        props = {
+            location:undefined,
+            imageName: 'testmap.png'
+        }
+        
+        mountedMap = shallow(<Map {...props}/>);
     })
 
     it('renders without crashing', () => {
@@ -22,8 +27,12 @@ describe('Map', () => {
     });
 
     it('displays the none map when no params are given', ()=>{
-        const defaultMap = mountedMap.find('img [src="images/default.png"]');
-      //  expect(defaultMap.length).toBe(1);
-      expect(mountedMap.find('img').prop('src')).toEqual(defaultImg);
+      let defaultMap = shallow (<Map />);
+      expect(defaultMap.find('img').prop('src')).toEqual('../images/default.png');
     } )
+
+    it('displays the map imagename passed to it', ()=>{
+
+        expect(mountedMap.find('img').prop('src')).toEqual('../images/testmap.png');
+    })
 });
