@@ -19,8 +19,9 @@ describe('Button', () => {
     it('call a function passed to it when clicked', ()=>{
         //need this to creat mock function
         const mockCallBack = jest.fn();
-        const mountedButtonWithCallback = shallow (<Button handClick={mockCallBack} />);
+        const mountedButtonWithCallback = shallow (<Button handleClick={mockCallBack} />);
         mountedButtonWithCallback.find('button').simulate('click');
+        expect(mockCallBack.mock.calls.length).toEqual(1);
     });
 });
 

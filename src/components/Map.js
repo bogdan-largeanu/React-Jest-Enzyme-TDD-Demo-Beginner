@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import defaultImg from '../images/default.png';
+//import defaultImg from '../images/default.png';
 import './Map.css';
 
 class Map extends Component {
